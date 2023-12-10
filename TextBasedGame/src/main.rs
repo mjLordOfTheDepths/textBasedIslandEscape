@@ -26,6 +26,10 @@ fn main() {
                 println!("Type 'North' to go North \nType 'South' to explore the South \nType 'West' to explore West \nType 'East' to go east \nType 'Quit' to exit");
             }
 
+            "Quit" => {
+                location = 999;
+            }
+
             "North" => { println!("You decide to head North. You discover a cave filled with red tribal markings. You seem to recognise these scratchings as Goblonic Text, yet, you cannot read Goblonic. Would you like to enter? y/n");
             location = 1;
                 while location == 1 {
@@ -95,7 +99,7 @@ fn main() {
                                                 inBattle = 0;
                                             }
 
-                                            if goblinLordHp < 1 {
+                                            if (goblinLordHp < 1 && hp > 0) {
                                                 println!("Goblin: 'You defeat me in combat! I teach you the ways of my sword.'\nThe Swordlord of the Goblin Horde gives you the Sword of the Swordlord of the Goblin Horde and trains you in its ways\n");
                                                 goblinSword = 4;
                                                 rustySword = 1;
@@ -265,12 +269,13 @@ fn main() {
                                                 inBattle = 0;
                                             }
 
-                                            if pirateHp < 1 {
+                                            if (pirateHp < 1 && hp > 0) {
                                                 println!("Pirate: 'Arrrrghh! I hath been slain! Curses be unto thy house!'\n");
 
                                                 inBattle = 0;
                                                 println!("\nYou slay the Orcish Pirate and comendeer his ship. You sail westward until you eventually port in the western kingdom of Dras'bon.\n\nYou win! You got the 'Take that!' ending.");
                                                 location = 999;
+                                                std::process::exit;
                                             }
                                         }
                                         "Heal" => {
@@ -330,12 +335,12 @@ fn main() {
                                             inBattle = 0;
                                         }
 
-                                        if pirateHp < 1 {
+                                        if (pirateHp < 1 && hp > 0) {
                                             println!("Pirate: 'Arrrrghh! I hath been slain! Curses be unto thy house!'\n");
 
-                                            inBattle = 0;
                                             println!("\nYou slay the Orcish Pirate and comendeer his ship. You sail westward until you eventually port in the western kingdom of Dras'bon.\n\nYou win! You got the 'Take that!' ending.");
                                             location = 999;
+                                            inBattle = 0;
                                         }
                                     }
                                     "Heal" => {
@@ -356,12 +361,8 @@ fn main() {
 
                         }
 
-                        "Quit" => {
-                            location = 999;
-                        }
-
                         _ => {
-                            println!("Invalid command. Type 'help' for a list of possible actions.");
+                            println!("Invalid command.");
                         }
 
                     } //232
