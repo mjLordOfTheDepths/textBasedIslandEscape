@@ -11,3 +11,6 @@ Minor Bug fixes.
 Version 0.03:
 String inputs are no longer case sensitive.
 Added a few lines of dialogue to the Goblin Companion.
+
+Version 0.04: 
+Update Allows the user to replay the game upon death/completion.
